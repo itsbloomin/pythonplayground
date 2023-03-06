@@ -10,7 +10,10 @@ class HelloWorld(Resource):
     def get(self):
         return ({"item" : "Hello World"})
 
+    def post(self):
+        return ({"test" : "Posted"})
+
 api.add_resource(HelloWorld, "/helloworld")
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True)  # turn off in production environment
