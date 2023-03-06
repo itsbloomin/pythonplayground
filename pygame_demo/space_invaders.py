@@ -46,13 +46,13 @@ def main():
     main_font = pygame.font.SysFont("calibri", 50, bold=True)
     ship = Ship(300, 350)
     clock = pygame.time.Clock()
+    player_vel = 5
 
     def redraw_window():
         WIN.blit(BG, (0, 0))
-        # draw text
+
         lives_label = main_font.render(f"Lives: {lives}", 1, (200, 100, 50))
         level_label = main_font.render(f"Level: {level}", 1, (200, 100, 50))
-
         WIN.blit(lives_label, (10, 10))
         WIN.blit(level_label, (WIDTH - level_label.get_width() - 10, 10))
 
@@ -68,5 +68,13 @@ def main():
             if event.type == pygame.QUIT:
                 run = False
 
-
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_LEFT]:
+            ship.x -= player_vel
+        if keys[pygame.K_RIGHT]:
+            ship.x += player_vel
+        if keys[pygame.K_UP]:
+            ship.y -= player_vel
+        if keys[pygame.K_DOWN]:
+            ship.y += player_vel
 main()
