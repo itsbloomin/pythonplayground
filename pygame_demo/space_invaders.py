@@ -4,6 +4,7 @@ import pygame
 import os
 import time
 import random
+
 pygame.font.init()
 
 WIDTH, HEIGHT = 750, 750
@@ -21,6 +22,7 @@ BLUE_LASER = pygame.image.load(os.path.join("assets", "pixel_laser_blue.png"))
 YELLOW_LASER = pygame.image.load(os.path.join("assets", "pixel_laser_yellow.png"))
 BG = pygame.transform.scale(pygame.image.load(os.path.join("assets", "background-black.png")), (WIDTH, HEIGHT))
 
+
 class Ship:
     COOLDOWN = 30
 
@@ -34,7 +36,16 @@ class Ship:
         self.cool_down_counter = 0
 
     def draw(self, window):
-        pygame.draw.rect(window, (255, 0, 0), (self.x, self.y, 50, 50))
+        window.blit(self.ship_img, (self.x, self.y))
+
+
+class Player(Ship):
+    def __init__(self, x, y, health=100):
+        super().__init__(x, y, health)
+        self.ship_img = YELLOW_SPACE_SHIP
+        self.laser_img = YELLOW_LASER
+        self.mask = pygame.mask.from_surface(self.ship_img)
+        self.max_health = health
 
 
 # main game event loop
@@ -44,7 +55,7 @@ def main():
     level = 1
     lives = 5
     main_font = pygame.font.SysFont("calibri", 50, bold=True)
-    ship = Ship(300, 350)
+    player = Player(300, 350)
     clock = pygame.time.Clock()
     player_vel = 5
 
@@ -56,7 +67,7 @@ def main():
         WIN.blit(lives_label, (10, 10))
         WIN.blit(level_label, (WIDTH - level_label.get_width() - 10, 10))
 
-        ship.draw(WIN)
+        player.draw(WIN)
 
         pygame.display.update()
 
@@ -69,12 +80,14 @@ def main():
                 run = False
 
         keys = pygame.key.get_pressed()
-        if keys[pygame.K_LEFT] and ship.x - player_vel > 0:
-            ship.x -= player_vel
-        if keys[pygame.K_RIGHT] and ship.x + player_vel < WIDTH:
-            ship.x += player_vel
-        if keys[pygame.K_UP] and ship.y - player_vel > 0:
-            ship.y -= player_vel
-        if keys[pygame.K_DOWN] and ship.y + player_vel < HEIGHT:
-            ship.y += player_vel
+        if keys[pygame.K_LEFT] and player.x - player_vel > 0:
+            player.x -= player_vel
+        if keys[pygame.K_RIGHT] and player.x + player_vel < WIDTH:
+            player.x += player_vel
+        if keys[pygame.K_UP] and player.y - player_vel > 0:
+            player.y -= player_vel
+        if keys[pygame.K_DOWN] and player.y + player_vel < HEIGHT:
+            player.y += player_vel
+
+
 main()
