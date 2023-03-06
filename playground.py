@@ -1,6 +1,7 @@
 # playground.py : Hello World
 # print("Hello world")
 
+# importing own module from myname.py
 import myname
 
 name = myname.get_name()
