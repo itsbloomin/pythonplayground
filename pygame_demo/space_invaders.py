@@ -69,12 +69,12 @@ def main():
                 run = False
 
         keys = pygame.key.get_pressed()
-        if keys[pygame.K_LEFT]:
+        if keys[pygame.K_LEFT] and ship.x - player_vel > 0:
             ship.x -= player_vel
-        if keys[pygame.K_RIGHT]:
+        if keys[pygame.K_RIGHT] and ship.x + player_vel < WIDTH:
             ship.x += player_vel
-        if keys[pygame.K_UP]:
+        if keys[pygame.K_UP] and ship.y - player_vel > 0:
             ship.y -= player_vel
-        if keys[pygame.K_DOWN]:
+        if keys[pygame.K_DOWN] and ship.y + player_vel < HEIGHT:
             ship.y += player_vel
 main()
