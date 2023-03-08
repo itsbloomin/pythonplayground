@@ -1,5 +1,7 @@
 # web scraping
-# https://www.youtube.com/watch?v=XVv6mJpFOb0
+# https://www.crummy.com/software/BeautifulSoup/bs4/doc/
+# https://realpython.com/beautiful-soup-web-scraper-python/
+
 from bs4 import BeautifulSoup
 import requests
 
