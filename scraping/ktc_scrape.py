@@ -13,13 +13,19 @@ results = soup.find(id="rankings-page-rankings")
 players = results.find_all("div", class_="onePlayer")
 
 running_backs = []
+rank = 0
 
 for player in players:
     name_div = player.find("div", class_="player-name")
-    name = name_div.find("a")
-    running_backs.append(name.text.strip())
+    name = name_div.find("a").text.strip()
+    team = player.find("span", class_="player-team").text.strip()
+    rank += 1
+    value = int(player.find("div", class_="value").text.strip())
+    tier_str = player.find("div", class_="player-info").text.strip()
+    tier = int(tier_str[4:])
 
-for back in running_backs:
-    print(back)
+    player_data = {"rank": rank, "tier": tier, "name": name, "team": team, "value": value}
+    running_backs.append(player_data)
 
-
+for rb in running_backs:
+    print(rb)
