@@ -3,10 +3,6 @@
 from bs4 import BeautifulSoup
 import requests
 
-# RB_url = "https://keeptradecut.com/dynasty-rankings/rb-rankings"
-    # id: "rankings-page-rankings"
-    # class: "class="onePlayer"
-
 # Example 1: Local File (no url request)
 #with open(url, 'r') as html_file:
 #    content = html_file.read()
@@ -32,7 +28,7 @@ for job in jobs:
 print("\n" + "Example 3:" + "\n")
 python_jobs = results.find_all("h2", string=lambda text: "python" in text.lower())
 
-# list comprehension example: https://realpython.com/list-comprehension-python/
+    # list comprehension example: https://realpython.com/list-comprehension-python/
 python_job_elements = [h2_element.parent.parent.parent for h2_element in python_jobs]
 
 for job_element in python_job_elements:
