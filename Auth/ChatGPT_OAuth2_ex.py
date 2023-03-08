@@ -1,28 +1,27 @@
 import requests
-from requests_oauthlib import OAuth2Session
-from oauthlib.oauth2 import BackendApplicationClient
 
-# Define API endpoints and credentials
-token_url = 'https://api.login.yahoo.com/oauth2/request_auth'
-api_url = 'https://fantasysports.yahooapis.com/fantasy/v2/game/nfl'
+# API endpoint to retrieve all current NFL players
+endpoint = "https://api.nfl.com/v1/players/positions"
 
-client_id = 'dj0yJmk9R29Jek9GcjBQMEdzJmQ9WVdrOWExVkhhbWcyYUhNbWNHbzlNQT09JnM9Y29uc3VtZXJzZWNyZXQmc3Y9MCZ4PTBk'
-client_secret = '5eb1f31e434264055de63041fb4a6c42e3d8039a'
+# Define query parameters to retrieve running backs
+params = {
+    "positionIds": "2",  # 2 corresponds to running back position
+    "teamIds": "",  # Leave empty to retrieve all running backs regardless of team
+    "sort": "ASC"  # Sort the players in ascending order of their last names
+}
 
-# Create an OAuth2Session object with a BackendApplicationClient
-client = BackendApplicationClient(client_id=client_id)
-oauth = OAuth2Session(client=client)
+# Replace "YOUR_API_KEY_HERE" with your actual API key
+headers = {
+    "Authorization": f"Bearer YOUR_API_KEY_HERE"
+}
 
-# Fetch an access token using the client credentials grant
-token = oauth.fetch_token(token_url=token_url, client_id=client_id,
-                          client_secret=client_secret)
+# Make a GET request to the endpoint with the specified parameters and headers
+response = requests.get(endpoint, params=params, headers=headers)
 
-# Make an authenticated request to the API using the access token
-headers = {'Authorization': f'Bearer {token["access_token"]}'}
-response = requests.get(api_url, headers=headers)
-
+# If the request was successful (status code 200), retrieve the player data from the response
 if response.status_code == 200:
     data = response.json()
-    # Process the response data
+    running_backs = data["players"]
+    # Process the running back data
 else:
-    print(f'Error: {response.status_code}')
+    print(f"Error retrieving data: {response.status_code}")
