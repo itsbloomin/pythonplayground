@@ -8,7 +8,9 @@ c = conn.cursor()
 
 # query
 c.execute("SELECT * FROM customers")
-print(c.fetchall())
+items = c.fetchall()
+for item in items:
+    print(item[0], item[1], item[2])
 
 # commit changes
 conn.commit()
