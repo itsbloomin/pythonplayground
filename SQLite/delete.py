@@ -7,7 +7,7 @@ conn = sqlite3.connect('customer.db')
 c = conn.cursor()
 
 # query
-c.execute("DELETE from customers WHERE rowid = 6")
+c.execute("DELETE FROM customers WHERE rowid = 5")
 
 # query
 c.execute("SELECT rowid, * FROM customers")
