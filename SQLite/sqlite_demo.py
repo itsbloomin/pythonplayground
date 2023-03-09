@@ -12,14 +12,18 @@ conn = sqlite3.connect('customer.db')
 # create cursor
 c = conn.cursor()
 
-# create a table (w/DocString)
-# remove / comment out once created -- maybe check if exists?
-# c.execute("""CREATE TABLE customers (
-#                first_name text,
-#                last_name text,
-#                email text
-#         )""")
+# commands
 
+# insert
+# c.execute("INSERT INTO customers VALUES ('Mary', 'Brown', 'mary@gmail.com')")
+
+#insert many
+# many_customers = [
+#    ('Jane', 'Doe', 'jane@gmail.com'),
+#    ('Amy', 'Smith', 'amy@gmail.com'),
+#    ('Tony', 'DiMarco', 'tony@gmail.com')
+#]
+# c.executemany("INSERT INTO customers VALUES (?, ?, ?)", many_customers)
 
 # commit changes
 conn.commit()
