@@ -6,4 +6,5 @@ env
 .idea
 .coverage
 ignorethisfile.py
+project_ideas.py
 /SQLite/customer.db
