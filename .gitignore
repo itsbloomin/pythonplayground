@@ -8,3 +8,5 @@ env
 ignorethisfile.py
 project_ideas.py
 /SQLite/customer.db
+/Pandas/df1.csv
+/Pandas/df1.xlsx
