@@ -49,3 +49,5 @@ age_sex = df1[["Age", "Sex"]]
 # just names and age under 30
 less_30 = df_csv.loc[df_csv["Age"] < 30, ["Name", "Age"]]
 print(less_30)
+# specific and columns with iloc (rows 1 to 4 and columns 1 to 2)
+# print(df_csv.iloc[0:4, 0:2])
