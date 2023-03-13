@@ -39,4 +39,13 @@ df_xlsx = pd.read_excel('sample.xlsx')
 
 # Select Series(s)
 age_sex = df1[["Age", "Sex"]]
-print(age_sex)
+# print(age_sex)
+
+# filtering
+# above_30 = df1[df1["Age"] > 30]
+# print(above_30)
+# less_30 = df_csv[df_csv["Age"] < 30]
+# print(less_30)
+# just names and age under 30
+less_30 = df_csv.loc[df_csv["Age"] < 30, ["Name", "Age"]]
+print(less_30)
