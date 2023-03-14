@@ -20,8 +20,8 @@ import json
 import webbrowser
 import base64
 
-client_id = "dj0yJmk9R29Jek9GcjBQMEdzJmQ9WVdrOWExVkhhbWcyYUhNbWNHbzlNQT09JnM9Y29uc3VtZXJzZWNyZXQmc3Y9MCZ4PTBk"
-client_secret = "5eb1f31e434264055de63041fb4a6c42e3d8039a"
+client_id = ""
+client_secret = "jhjh"
 base_url = "https://api.login.yahoo.com/"
 
 # REDIRECT_URI = "https://example.com/redirect"
